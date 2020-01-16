@@ -25,9 +25,12 @@ const { fetchMyIp, fetchCoordsByIp, fetchISSFlyOverTimes, nextISSTimesForMyLocat
 // });
 
 nextISSTimesForMyLocation((err, times) => {
-  if(error){
+  if(err){
     return console.log('Error:', err)
   } else {
-    console.log('Working, ', times);
+    times.forEach(time => {
+      const flyByDate = new Date(time.risetime).toUTCString();
+      console.log(`Next pass at ${flyByDate} for ${time.duration} seconds!`);
+    });
   }
 });
