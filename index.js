@@ -29,7 +29,7 @@ nextISSTimesForMyLocation((err, times) => {
     return console.log('Error:', err)
   } else {
     times.forEach(time => {
-      const flyByDate = new Date(time.risetime).toUTCString();
+      const flyByDate = new Date(time.risetime * 1000).toUTCString();
       console.log(`Next pass at ${flyByDate} for ${time.duration} seconds!`);
     });
   }
